@@ -7,7 +7,6 @@ import pl.karolciuchy.ciuchyapp.dao.StatisticRepo;
 import pl.karolciuchy.ciuchyapp.dao.entity.Perfume;
 import pl.karolciuchy.ciuchyapp.dao.helpers.StatisticHelper;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,7 +21,7 @@ public class StatisticApi {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public List<Perfume> getDataBetween(@RequestBody StatisticHelper statisticHelper){
 
-      return statisticRepo.findAllByRecieveDateBetween(statisticHelper);
+      return statisticRepo.findAllByRecieveDateBetween(statisticHelper.getStartDate(), statisticHelper.getEndDate());
     }
 
     @GetMapping("/isnotnull")
